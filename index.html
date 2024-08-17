@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/index.css">
+<title>おうちカクテル</title>
+<style>
+    li {
+        cursor: pointer;
+        padding: 5px;
+    }
+    .selected {
+        background: #5d06ff;
+        color: #ffffff;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>おうちカクテル</h1>
+</header>
+
+<main>
+    <div class="title">ベースのお酒を選ぼう</div>
+    <ul id="base-list">
+        <li id="vodka">ウォッカ</li>
+        <li id="jin">ジン</li>
+        <li id="rum">ラム</li>
+        <li id="tequila">テキーラ</li>
+        <li id="base-random">おまかせ</li>
+    </ul>
+
+    <div class="title">割りものを選ぼう</div>
+    <ul id="mixer-list">
+        <li id="grapefruit">グレープフルーツジュース</li>
+        <li id="orange">オレンジジュース</li>
+        <li id="lime">ライムジュース</li>
+        <li id="ginger">ジンジャーエール</li>
+        <li id="mixer-random">おまかせ</li>
+    </ul>
+
+    <div class="title">今日のカクテル</div>
+    <div><img id="img" src=""  alt="" ></div>
+    <span id="disclaimer" style="font-size:70%"></span>
+    <!-- http://www5.plala.or.jp/vaio0630/css/css01.htm -->
+
+</main>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.2/dist/confetti.browser.min.js"></script>
+<!-- https://goke.work/programing/369 -->
+<script>
+    var base = "";
+    var mixer = "";
+
+    function updateCocktail() {
+        if (base && mixer) {
+            $("#img").attr("src", "img/" + base + "_" + mixer + ".png" );
+            $("#disclaimer").html('データ元：カクテルレシピ検索サイト「<a href="https://cocktail-f.com/" target="_blank">カクテルエフ・リカー</a>」');
+            // https://www.sejuku.net/blog/38267
+            // https://qiita.com/enumura1/items/97af44526e4d303fab33
+            confetti({
+	       particleCount: 100,
+	       spread: 70,
+	       origin: { y: 0.6 }
+	     });
+        // } else {
+        //     $("#img").attr("src", "");
+        //     $("#disclaimer").text("");
+        }
+    }
+
+    // ベースの選択
+    $("#base-list li").on("click", function() {
+        base = $(this).attr('id');
+        $("#base-list li").removeClass("selected");
+        $(this).addClass("selected");
+        if ($(this).attr('id') === 'base-random') {
+            const bases = ["vodka", "jin", "rum", "tequila"];
+            base = bases[Math.floor(Math.random() * bases.length)];
+            $("#base-list li").removeClass("selected");
+            $("#" + base).addClass("selected");
+        }
+        updateCocktail();
+    });
+
+    // 割りものの選択
+    $("#mixer-list li").on("click", function() {
+        mixer = $(this).attr('id');
+        $("#mixer-list li").removeClass("selected");
+        $(this).addClass("selected");
+        if ($(this).attr('id') === 'mixer-random') {
+            const mixers = ["grapefruit", "orange", "lime", "ginger"];
+            mixer = mixers[Math.floor(Math.random() * mixers.length)];
+            $("#mixer-list li").removeClass("selected");
+            $("#" + mixer).addClass("selected");
+        }
+        updateCocktail();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+body{
+    margin:0;
+    padding:0;
+    text-align:center;
+    font-family: "meiryo UI","seigo UI";
+    font-size: 28px;
+}
+/* header{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+} */
+/* main{
+    border-bottom:1px solid #ccc;
+} */
+/* footer{
+    background-color: #fff;
+    border-bottom:1px solid #ccc;
+    text-align: center;
+} */
+p{
+    font-size:150%;
+    text-align: center;
+    border-bottom:1px solid #fff;
+    height:200px;
+}
+ul{
+    padding: 0;
+    border-top: 1px solid #000000;
+    display:table;  /* 定義 */
+    table-layout: fixed;
+    width:70%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+li{
+    list-style-type:none;
+    border: 1px solid #666;
+    background-color: #FFF;
+    display:table-cell;  /* 定義 */
+    cursor: pointer;
+}
+li:hover{
+    background:#5d06ff;
+    color:#fff;
+}
+
+/* 追加 */
+body{
+    background-color: #ffffff;
+    opacity: 100;
+    z-index: -1;
+    background-image: radial-gradient(#ffc107 2px, #ffffff 2px);
+    background-size: 20px 20px;
+    margin-bottom: 50px;
+}
+/* https://125naroom.com/web/3737 */
+/* https://colorate.azurewebsites.net/ja/Color/FFC107 */
+
+.title{
+    margin-top: 50px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+#base-random{
+    color: #ff9579
+}
+#mixer-random{
+    color: #ff9579
+}
+#img{
+    width: 70%;
+}
